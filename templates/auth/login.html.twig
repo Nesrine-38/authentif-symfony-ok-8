@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block title %}Log In{% endblock %}
+
+{% block body %}
+{% if error %}
+<div class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+<div class="card mx-auto w-75 mt-5">
+    <div class="card-body">
+        <h1 class="card-title">Login</h1>
+<form method="post">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="_username" value="{{ last_email }}">
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="_password">
+
+    {# Indique vers #}
+    <input type="hidden" name="_target_path" value="/protected">
+    
+    <button type="submit" class="btn btn-primary">Login</button>
+</div>
+</div>
+</form>
+{% endblock body %}

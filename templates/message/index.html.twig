@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message list{% endblock %}
+
+{% block body %}
+<h1>Messages List</h1>
+
+{% for item in messages %}
+    <p>{{item.user.email}} : {{item.content}}
+
+        {% if app.user and app.user.id == item.user.id %}
+            <a class="btn btn-danger" href="/delete-message/{{item.id}}">Delete</a>
+        {% endif %}
+    </p>
+{% endfor %}
+{% endblock %}
